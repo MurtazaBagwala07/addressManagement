@@ -13,15 +13,14 @@ const AddressForm = (props) => {
         e.preventDefault();
         props.setAddressList([...props.addressList,form])
         console.log(form)
-        console.log(props.addressList)
+        postData(form)
     }
 
-    useEffect(()=>{
-        (async ()=>{
-            const response = await axios.post("https://6218ca5d1a1ba20cbaab7005.mockapi.io/api/address",form)
+    const postData=async (form)=>{
+        const response = await axios.post("https://6218ca5d1a1ba20cbaab7005.mockapi.io/api/address",form)
             console.log(response)
-        })();
-    },[props.addressList])
+    }
+
     
   return (
     <form onSubmit={submitHandler}>

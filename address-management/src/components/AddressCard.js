@@ -8,7 +8,7 @@ const AddressCard = (prop) => {
         <p>{prop.address.city}</p>
         <p>{prop.address.pincode}</p>
         <p>{prop.address.mobile}</p>
-        <button>Delete</button>
+        <button onClick={()=>prop.deleteHandler(prop.address.id)}>Delete</button>
         <button>Edit</button>
     </div>
   )

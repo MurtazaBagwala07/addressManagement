@@ -20,13 +20,19 @@ function App() {
     })();
   }, []);
 
+  const deleteHandler=(id)=>{
+    const newList =addressList.filter((address)=>address.id!==id)
+    console.log(newList)
+    setAddressList(newList);
+  }
+
   return (
     <div className="App">
         <AddressForm addressList={addressList} setAddressList={setAddressList}/>
         {
           addressList.map((add)=>{
             return (
-              <AddressCard key={add.id} address={add}/>
+              <AddressCard key={add.id} deleteHandler={deleteHandler} address={add}/>
             )
           })
         }
