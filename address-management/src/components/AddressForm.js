@@ -2,12 +2,15 @@ import React,{useState,useEffect} from 'react'
 import axios from "axios";
 
 const AddressForm = (props) => {
-    const [form,setForm] =useState({
+
+    const defaultObj ={
         name:"",
         city:"",
         pincode:"",
         mobile:""
-    })
+    }
+
+    const [form,setForm] =useState(defaultObj)
 
     const submitHandler=(e)=>{
         e.preventDefault();

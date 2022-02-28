@@ -20,11 +20,17 @@ function App() {
     })();
   }, []);
 
-  const deleteHandler=(id)=>{
-    const newList =addressList.filter((address)=>address.id!==id)
+  const deleteHandler=(add)=>{
+    const newList =addressList.filter((address)=>address.id!==add.id)
     console.log(newList)
     setAddressList(newList);
+    (async()=>{
+      const resp = await axios.delete(`https://6218ca5d1a1ba20cbaab7005.mockapi.io/api/address/${add.id}`)
+      console.log(resp);
+    })();
   }
+
+
 
   return (
     <div className="App">
@@ -32,7 +38,7 @@ function App() {
         {
           addressList.map((add)=>{
             return (
-              <AddressCard key={add.id} deleteHandler={deleteHandler} address={add}/>
+              <AddressCard key={add.id} addressList={addressList} setAddressList={setAddressList} deleteHandler={deleteHandler} address={add}/>
             )
           })
         }
